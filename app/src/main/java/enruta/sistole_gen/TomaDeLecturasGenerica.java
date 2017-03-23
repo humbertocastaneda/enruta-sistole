@@ -121,13 +121,13 @@ public abstract class TomaDeLecturasGenerica {
 	
 	/**Realiza los cambios necesarios en la bd segun la anomalia seleccionada
 	 * 
-	 * @param Anomalia Anomalia seleccionada
+	 * @param anomalia Anomalia seleccionada
 	 */
 	public abstract void RealizarModificacionesDeAnomalia(String anomalia, String comentarios);
 	
 	/**Deshace los cambios necesarios en la bd segun la anomalia seleccionada
 	 * 
-	 * @param Anomalia Anomalia borrada
+	 * @param anomalia Anomalia borrada
 	 */
 	public abstract void DeshacerModificacionesDeAnomalia(String anomalia);
 	
@@ -296,7 +296,7 @@ public abstract class TomaDeLecturasGenerica {
 	
 	/**
 	 * Realiza los cambios necesarios en la bd segun la anomalia seleccionada
-	 * @param Anomalia Anomalia seleccionada
+	 * @param anomalia Anomalia seleccionada
 	 */
 		public abstract void RealizarModificacionesDeAnomalia(String anomalia);
 		
@@ -809,9 +809,9 @@ public Vector <EstructuraResumen> getResumen(SQLiteDatabase db){
 			   
 			   if (to.ls_carpeta.endsWith("\\"))
 				   to.ls_carpeta= to.ls_carpeta.substring(0, to.ls_carpeta.length() -1);
-			   
-			   
-			   to.ls_carpeta+=tipo==TransmisionesPadre.TRANSMISION?"Entrada":"Salida";
+
+
+			   to.ls_carpeta+=tipo==TransmisionesPadre.TRANSMISION?"LecturaEntrada":"LecturaSalida";
 			   
 			   c=db.rawQuery("Select value from config where key='lote'", null);
 			   c.moveToFirst();
@@ -1019,6 +1019,9 @@ public String subirDirectorio(String ls_carpeta, int cuantos) {
 		if (ls_carpeta.lastIndexOf("\\") >= 0)
 			ls_carpeta = ls_carpeta.substring(0,
 					ls_carpeta.lastIndexOf("\\"));
+	   else{
+			ls_carpeta ="";
+		}
 	}
 
 	return ls_discoDuro + ls_carpeta;

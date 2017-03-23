@@ -166,12 +166,12 @@ public class TomaDeLecturasComapaTampico extends TomaDeLecturasGenerica {
 		globales.mostrarSonido=false;
 
 		globales.defaultTransmision="1";
-		globales.defaultRutaDescarga="C:\\sistoleTampico\\lectura";
+		globales.defaultRutaDescarga="C:\\";
 //		globales.defaultRutaDescarga="C:\\sistolePruebas\\lectura";
 		globales.defaultUnicom="1120";								// CE, Hay que ver si tenemos el campo CPL
 		globales.defaultRuta="03";
 		globales.defaultItinerario="4480";
-		globales.defaultServidorGPRS="http://www.espinosacarlos.com";
+		globales.defaultServidorGPRS="http://tampico.sistoleweb.com";
 		globales.defaultServidorWIFI="http://10.240.225.11/1120";
 		globales.defaultServidorDeActualizacion="";
 		
@@ -1255,7 +1255,7 @@ public Cursor getContenidoDelArchivo(SQLiteDatabase db, int tipo){
 			   if (to.ls_carpeta.endsWith("\\") && !to.ls_carpeta.equals("") )
 				   to.ls_carpeta=to.ls_carpeta.substring(0, to.ls_carpeta.length()-1);
 			   
-			   to.ls_carpeta+=tipo==TransmisionesPadre.TRANSMISION?"Entrada":   "Salida";
+			   to.ls_carpeta+=tipo==TransmisionesPadre.TRANSMISION?"LecturaEntrada":  "LecturaSalida";
 			   
 				   to.ls_carpeta+="\\activos";
 				   
