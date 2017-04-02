@@ -912,10 +912,16 @@ public class trasmisionDatos extends TransmisionesPadre {
 		}
 	}
 
-	public void tope(int avance) {
-		if (pb_progress.isIndeterminate())
-			pb_progress.setIndeterminate(false);
-		pb_progress.setMax(avance);
+	public void tope(final int avance) {
+		mHandler.post(new Runnable() {
+			@Override
+			public void run() {
+				if (pb_progress.isIndeterminate())
+					pb_progress.setIndeterminate(false);
+				pb_progress.setMax(avance);
+			}
+		});
+
 	}
 
 	public void setAcabado() {
